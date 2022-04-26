@@ -17,5 +17,7 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/stores', [StoresController::class, 'stores']);
+Route::get('/common-stores/{limit}', [StoresController::class, 'commonStores']);
 Route::get('/stores/{id}', [StoresController::class, 'getStore']);
 Route::get('/coupons/{limit}', [CouponsController::class, 'coupons']);
+Route::get('/get-coupons/{id}', [CouponsController::class, 'getCoupon']);

@@ -15,4 +15,8 @@ class StoresController extends Controller
     {
         return Stores::where('id', $id)->first();
     }
+    public function commonStores($limit)
+    {
+        return Stores::inRandomOrder()->limit($limit)->get();
+    }
 }

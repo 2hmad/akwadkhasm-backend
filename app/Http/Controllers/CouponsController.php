@@ -11,4 +11,8 @@ class CouponsController extends Controller
     {
         return Coupons::limit($limit)->with('store')->get();
     }
+    public function getCoupon($id)
+    {
+        return Coupons::where('store', $id)->with('store')->get();
+    }
 }
