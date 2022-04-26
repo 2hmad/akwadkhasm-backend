@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\CategoriesController;
 use App\Http\Controllers\CouponsController;
 use App\Http\Controllers\StoresController;
 use Illuminate\Http\Request;
@@ -21,3 +22,5 @@ Route::get('/common-stores/{limit}', [StoresController::class, 'commonStores']);
 Route::get('/stores/{id}', [StoresController::class, 'getStore']);
 Route::get('/coupons/{limit}', [CouponsController::class, 'coupons']);
 Route::get('/get-coupons/{id}', [CouponsController::class, 'getCoupon']);
+Route::get('/categories', [CategoriesController::class, 'categories']);
+Route::get('/categories-limit/{limit}', [CategoriesController::class, 'limit']);
