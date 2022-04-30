@@ -1,0 +1,69 @@
+@import url("https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;500;600;700&display=swap");
+* {
+  margin: 0;
+  padding: 0;
+  font-family: "Cairo", sans-serif;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+}
+
+body {
+  background-color: #f5f5f5;
+  direction: rtl;
+  text-align: right;
+  min-height: 100vh;
+}
+
+.btn {
+  background-color: #1475bc;
+  padding: 7px;
+  color: white;
+  border-radius: 7px;
+  border: 1px solid #1475bc;
+  cursor: pointer;
+}
+
+#login-page {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  height: 100%;
+  min-height: 100vh;
+}
+
+#login-page form {
+  padding: 20px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  gap: 10px;
+  width: 500px;
+  max-width: 500px;
+  background: white;
+  -webkit-box-shadow: 2px 3px 20px 0px #e9e9e9;
+          box-shadow: 2px 3px 20px 0px #e9e9e9;
+  border-radius: 5px;
+}
+
+#login-page form h3 {
+  text-align: center;
+}
+
+#login-page form .email,
+#login-page form .password {
+  padding: 7px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  outline: none;
+}
+/*# sourceMappingURL=main.css.map */
