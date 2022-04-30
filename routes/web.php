@@ -1,7 +1,8 @@
 <?php
 
+use App\Http\Controllers\Admin\CouponsController;
 use App\Http\Controllers\Admin\LoginController;
-use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\Admin\DashboardController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -17,3 +18,4 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', [LoginController::class, 'index']);
 Route::get('/dashboard', [DashboardController::class, 'index']);
+Route::get('/add-coupon', [CouponsController::class, 'index']);

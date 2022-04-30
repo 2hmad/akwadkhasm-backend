@@ -66,4 +66,8 @@ body {
   border-radius: 5px;
   outline: none;
 }
+
+#dashboard-page {
+  min-height: 100vh;
+}
 /*# sourceMappingURL=main.css.map */

@@ -11,7 +11,7 @@
                 <input type="checkbox" name="remember" id="remember">
                 <label for="remember">تذكرني</label>
             </div>
-            <input type="submit" name="login" class="btn" value="تسجيل الدخول">
+            <input type="submit" name="login" class="btn btn-outline-primary" value="تسجيل الدخول">
         </form>
     </div>
 @endsection

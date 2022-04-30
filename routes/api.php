@@ -24,6 +24,7 @@ Route::get('/common-stores/{limit}', [StoresController::class, 'commonStores']);
 Route::get('/stores/{id}', [StoresController::class, 'getStore']);
 
 Route::get('/coupons/{limit}', [CouponsController::class, 'coupons']);
+Route::get('/allcoupons', [CouponsController::class, 'allcoupons']);
 Route::get('/get-coupons/{storeID}', [CouponsController::class, 'getCoupon']);
 Route::get('/coupon/{couponID}', [CouponsController::class, 'coupon']);
 Route::get('/coupons-by-cat/{cat}', [CouponsController::class, 'couponsByCat']);
