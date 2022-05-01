@@ -5,14 +5,14 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 
-class CouponsController extends Controller
+class StoresController extends Controller
 {
     public function index()
     {
-        return view('coupons');
+        return view('stores');
     }
     public function add()
     {
-        return view('add-coupon');
+        return view('add-store');
     }
 }

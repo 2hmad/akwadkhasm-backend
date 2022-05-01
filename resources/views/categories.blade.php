@@ -6,7 +6,7 @@
     <div id="dashboard-page">
         @include('layouts.sidebar')
         <div class="container" style="margin-top:3%">
-            <a href="/add-coupon">
+            <a href="/add-cat">
                 <button class="btn btn-outline-success">
                     اضافة +
                 </button>
@@ -22,7 +22,7 @@
             var edit_button = gridjs.h(
                 "button", {
                     className: "btn btn-primary",
-                    name: "edit-coupon",
+                    name: "edit-cat",
                 },
                 "تعديل"
             );
@@ -30,7 +30,7 @@
             return (
                 gridjs.h('form', {
                     method: "POST",
-                    action: "/edit-coupon/" + row.cells[0].data
+                    action: "/edit-cat/" + row.cells[0].data
                 }, edit_button)
             )
         }
@@ -41,16 +41,12 @@
             }, {
                 name: "العنوان"
             }, {
-                name: "النوع"
-            }, {
-                name: "المتجر"
-            }, {
                 name: '',
                 formatter: editFormatter,
             }],
             server: {
-                url: 'http://localhost:8000/api/allcoupons',
-                then: data => data.map(coupon => [coupon.id, coupon.title_ar, coupon.type, coupon.store.title_ar])
+                url: 'http://localhost:8000/api/categories',
+                then: data => data.map(cat => [cat.id, cat.title_ar, ])
             },
             search: {
                 enabled: true,

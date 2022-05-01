@@ -6,7 +6,7 @@
     <div id="dashboard-page">
         @include('layouts.sidebar')
         <div class="container" style="margin-top:3%">
-            <a href="/add-coupon">
+            <a href="/add-store">
                 <button class="btn btn-outline-success">
                     اضافة +
                 </button>
@@ -19,29 +19,25 @@
     <script src="https://cdn.jsdelivr.net/npm/gridjs/dist/gridjs.umd.js"></script>
     <script>
         function editFormatter(cell, row) {
-            var edit_button = gridjs.h(
+            var delete_button = gridjs.h(
                 "button", {
-                    className: "btn btn-primary",
-                    name: "edit-coupon",
+                    className: "btn btn-danger",
+                    name: "delete-coupon",
                 },
-                "تعديل"
+                "حذف"
             );
 
             return (
                 gridjs.h('form', {
                     method: "POST",
-                    action: "/edit-coupon/" + row.cells[0].data
-                }, edit_button)
+                    action: "/delete-coupon/" + row.cells[0].data
+                }, delete_button)
             )
         }
 
         new gridjs.Grid({
             columns: [{
                 name: '#'
-            }, {
-                name: "العنوان"
-            }, {
-                name: "النوع"
             }, {
                 name: "المتجر"
             }, {
