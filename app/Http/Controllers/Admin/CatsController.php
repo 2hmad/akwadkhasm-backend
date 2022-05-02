@@ -11,4 +11,12 @@ class CatsController extends Controller
     {
         return view('categories');
     }
+    public function add()
+    {
+        return view('add-cat');
+    }
+    public function edit($id)
+    {
+        return view('edit-cat');
+    }
 }

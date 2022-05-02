@@ -29,14 +29,18 @@
                 <div class="mb-3">
                     <label for="store" class="form-label">المتجر</label>
                     <select class="form-select" id="store">
-                        <option>نون</option>
+                        @foreach ($getStores as $store)
+                            <option>{{ $store->title_ar }}</option>
+                        @endforeach
                     </select>
                 </div>
                 <div class="row">
                     <div class="col-lg">
                         <label for="store" class="form-label">التصنيف</label>
                         <select class="form-select" id="store">
-                            <option>الكترونيات</option>
+                            @foreach ($getCats as $cat)
+                                <option>{{ $cat->title_ar }}</option>
+                            @endforeach
                         </select>
                     </div>
                     <div class="col-lg">
@@ -46,6 +50,7 @@
                         </select>
                     </div>
                 </div>
+                <br>
                 <div class="d-grid gap-2 col-2 mx-auto">
                     <button type="submit" class="btn btn-primary">اضافة</button>
                 </div>

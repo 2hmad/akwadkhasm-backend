@@ -25,7 +25,7 @@
                     <a class="nav-link" href="/ads" style="color:white">الاعلانات</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#" style="color:white">تسجيل خروج</a>
+                    <a class="nav-link" href="{{ route('logout') }}" style="color:white">تسجيل خروج</a>
                 </li>
             </ul>
         </div>

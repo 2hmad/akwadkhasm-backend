@@ -18,10 +18,19 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', [LoginController::class, 'index']);
-Route::get('/dashboard', [DashboardController::class, 'index']);
-Route::get('/coupons', [CouponsController::class, 'index']);
-Route::get('/add-coupon', [CouponsController::class, 'add']);
-Route::get('/stores', [StoresController::class, 'index']);
-Route::get('/add-store', [StoresController::class, 'add']);
-Route::get('/cats', [CatsController::class, 'index']);
+Route::group(['middleware' => 'loggedIn'], function () {
+    Route::get('/', [LoginController::class, 'index'])->name('login');
+    Route::post('/login', [LoginController::class, 'login'])->name('customLogin');
+});
+
+Route::group(['middleware' => 'checkAuth'], function () {
+    Route::get('/logout', [LoginController::class, 'logout'])->name('logout');
+    Route::get('/dashboard', [DashboardController::class, 'index']);
+    Route::get('/coupons', [CouponsController::class, 'index']);
+    Route::get('/add-coupon', [CouponsController::class, 'add']);
+    Route::get('/stores', [StoresController::class, 'index']);
+    Route::get('/add-store', [StoresController::class, 'add']);
+    Route::get('/cats', [CatsController::class, 'index']);
+    Route::get('/add-cat', [CatsController::class, 'add']);
+    Route::get('/edit-cat/{id}', [CatsController::class, 'edit']);
+});

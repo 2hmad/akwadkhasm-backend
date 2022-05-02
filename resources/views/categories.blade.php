@@ -29,7 +29,7 @@
 
             return (
                 gridjs.h('form', {
-                    method: "POST",
+                    method: "get",
                     action: "/edit-cat/" + row.cells[0].data
                 }, edit_button)
             )
