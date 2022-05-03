@@ -18,6 +18,12 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+Route::get('/{any?}', [
+    function () {
+        return view('welcome');
+    }
+])->where('any', '.*');
+
 Route::group(['middleware' => 'loggedIn'], function () {
     Route::get('/', [LoginController::class, 'index'])->name('login');
     Route::post('/login', [LoginController::class, 'login'])->name('customLogin');
