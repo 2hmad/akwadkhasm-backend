@@ -1,6 +1,6 @@
 <template>
     <div id="login-page">
-        <form method="POST">
+        <form @submit.prevent="login">
             <h3>تسجيل الدخول</h3>
             <label>البريد الالكتروني</label>
             <input
@@ -8,6 +8,7 @@
                 name="email"
                 class="email"
                 placeholder="البريد الالكتروني"
+                v-model="form.email"
                 required
             />
             <label>كلمة المرور</label>
@@ -16,6 +17,7 @@
                 name="password"
                 class="password"
                 placeholder="كلمة المرور"
+                v-model="form.password"
                 required
             />
             <div>
@@ -32,7 +34,29 @@
     </div>
 </template>
 <script>
+import { mapActions } from "vuex";
 export default {
-    data() {},
+    data() {
+        return {
+            form: {
+                email: "",
+                password: "",
+            },
+        };
+    },
+    methods: {
+        ...mapActions(["LogIn"]),
+        async login() {
+            const User = new FormData();
+            User.append("email", this.form.email);
+            User.append("password", this.form.password);
+            try {
+                await this.LogIn(User);
+                // window.location.href = "/";
+            } catch (error) {
+                console.log(error);
+            }
+        },
+    },
 };
 </script>

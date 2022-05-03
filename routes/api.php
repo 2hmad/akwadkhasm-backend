@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Admin\AuthController;
 use App\Http\Controllers\Admin\CatsController;
 use App\Http\Controllers\Admin\CouponsController as AdminCouponsController;
 use App\Http\Controllers\Admin\DashboardController;
@@ -41,7 +42,9 @@ Route::get('/search/{keyword}', [SearchController::class, 'search']);
 
 Route::get('/carousels', [CarouselsController::class, 'fetch']);
 
+
 Route::group(['prefix' => 'admin'], function () {
+    Route::post('/auth', [AuthController::class, 'login']);
     Route::get('/dashboard', [DashboardController::class, 'index']);
     Route::get('/coupons', [AdminCouponsController::class, 'index']);
     Route::post('/add-coupon', [AdminCouponsController::class, 'add']);

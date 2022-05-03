@@ -51,12 +51,20 @@
                         >
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="/ads" style="color: white"
-                            >الاعلانات</a
+                        <a
+                            class="nav-link"
+                            href="/account"
+                            style="color: white"
                         >
+                            حسابي
+                        </a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="" style="color: white"
+                        <a
+                            class="nav-link"
+                            href=""
+                            style="color: white"
+                            @click="logout"
                             >تسجيل خروج</a
                         >
                     </li>
@@ -68,5 +76,11 @@
 <script>
 export default {
     name: "Sidebar",
+    methods: {
+        async logout() {
+            await this.$store.dispatch("LogOut");
+            this.$router.push("/login");
+        },
+    },
 };
 </script>
