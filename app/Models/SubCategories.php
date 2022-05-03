@@ -11,9 +11,9 @@ class SubCategories extends Model
     public $table = "subcategories";
     protected $fillable = [
         'id',
-        'title_en',
-        'title_ar',
+        'title',
         'cat_id'
     ];
     protected $hidden = [];
+    public $timestamps = false;
 }

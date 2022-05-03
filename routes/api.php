@@ -1,5 +1,9 @@
 <?php
 
+use App\Http\Controllers\Admin\CatsController;
+use App\Http\Controllers\Admin\CouponsController as AdminCouponsController;
+use App\Http\Controllers\Admin\DashboardController;
+use App\Http\Controllers\Admin\StoresController as AdminStoresController;
 use App\Http\Controllers\CarouselsController;
 use App\Http\Controllers\CategoriesController;
 use App\Http\Controllers\CouponsController;
@@ -36,3 +40,19 @@ Route::get('/categories-limit/{limit}', [CategoriesController::class, 'limit']);
 Route::get('/search/{keyword}', [SearchController::class, 'search']);
 
 Route::get('/carousels', [CarouselsController::class, 'fetch']);
+
+Route::group(['prefix' => 'admin'], function () {
+    Route::get('/dashboard', [DashboardController::class, 'index']);
+    Route::get('/coupons', [AdminCouponsController::class, 'index']);
+    Route::post('/add-coupon', [AdminCouponsController::class, 'add']);
+    Route::post('/delete-coupon', [AdminCouponsController::class, 'delete']);
+    Route::get('/stores', [AdminStoresController::class, 'index']);
+    Route::post('/add-store', [AdminStoresController::class, 'add']);
+    Route::get('/cats', [CatsController::class, 'index']);
+    Route::post('/subcats', [CatsController::class, 'getSubCats']);
+    Route::post('/add-cat', [CatsController::class, 'add']);
+    Route::post('/add-subcat', [CatsController::class, 'addSubCat']);
+    Route::post('/delete-subcat', [CatsController::class, 'deleteSubCat']);
+    Route::post('/edit-cat', [CatsController::class, 'edit']);
+    Route::get('/one-cat/{id}', [CatsController::class, 'oneCat']);
+});

@@ -34,6 +34,7 @@
     </div>
 </template>
 <script>
+import axios from "axios";
 import Sidebar from "../components/Sidebar";
 export default {
     components: {
@@ -48,7 +49,7 @@ export default {
                 },
                 {
                     label: "المتجر",
-                    field: "age",
+                    field: "title",
                 },
                 {
                     label: "",
@@ -56,17 +57,14 @@ export default {
                     sortable: false,
                 },
             ],
-            rows: [
-                { id: 1, name: "John", age: 20, createdAt: "", score: 0.03343 },
-                {
-                    id: 2,
-                    name: "Jane",
-                    age: 24,
-                    createdAt: "2011-10-31",
-                    score: 0.03343,
-                },
-            ],
+            rows: [],
         };
+    },
+    mounted() {
+        axios
+            .get("/api/admin/stores")
+            .then((res) => (this.rows = res.data))
+            .catch((err) => console.log(err));
     },
 };
 </script>

@@ -30,7 +30,7 @@ export default [
         name: "Add Category",
     },
     {
-        path: "/edit-category",
+        path: "/edit-category/:id",
         component: editCategory,
         name: "Edit Category",
     },

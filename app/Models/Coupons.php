@@ -10,15 +10,17 @@ class Coupons extends Model
     use HasFactory;
     protected $fillable = [
         'id',
-        'title_en',
-        'title_ar',
+        'title',
         'type',
         'coupon',
         'offer_link',
         'store',
+        'category_id',
+        'subcategory_id',
         'date',
     ];
     protected $hidden = [];
+    public $timestamps = false;
     public function store()
     {
         return $this->belongsTo(Stores::class, 'store', 'id');

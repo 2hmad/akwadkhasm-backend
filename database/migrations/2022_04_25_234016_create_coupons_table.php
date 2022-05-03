@@ -15,8 +15,7 @@ return new class extends Migration
     {
         Schema::create('coupons', function (Blueprint $table) {
             $table->id();
-            $table->text('title_en');
-            $table->text('title_ar');
+            $table->text('title');
             $table->text('type');
             $table->text('coupon')->nullable();
             $table->text('offer_link')->nullable();

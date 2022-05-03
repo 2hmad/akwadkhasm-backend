@@ -2,7 +2,7 @@
     <div id="dashboard-page">
         <Sidebar />
         <div class="container" style="margin-top: 3%">
-            <a href="/add-cat">
+            <a href="/add-category">
                 <button class="btn btn-outline-success">اضافة +</button>
             </a>
             <vue-good-table
@@ -24,7 +24,7 @@
                 <template slot="table-row" slot-scope="props">
                     <span v-if="props.column.field == 'actions'">
                         <router-link
-                            to="/edit-category"
+                            :to="`/edit-category/${props.row.id}`"
                             class="btn btn-primary"
                         >
                             تعديل
@@ -39,6 +39,7 @@
     </div>
 </template>
 <script>
+import axios from "axios";
 import Sidebar from "../components/Sidebar";
 export default {
     components: {
@@ -53,7 +54,7 @@ export default {
                 },
                 {
                     label: "العنوان",
-                    field: "age",
+                    field: "title",
                 },
                 {
                     label: "",
@@ -61,17 +62,14 @@ export default {
                     sortable: false,
                 },
             ],
-            rows: [
-                { id: 1, name: "John", age: 20, createdAt: "", score: 0.03343 },
-                {
-                    id: 2,
-                    name: "Jane",
-                    age: 24,
-                    createdAt: "2011-10-31",
-                    score: 0.03343,
-                },
-            ],
+            rows: [],
         };
+    },
+    mounted() {
+        axios
+            .get("/api/admin/cats")
+            .then((res) => (this.rows = res.data))
+            .catch((err) => console.log(err));
     },
 };
 </script>

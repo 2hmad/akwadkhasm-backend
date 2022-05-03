@@ -11,10 +11,10 @@ class Categories extends Model
     public $table = "categories";
     protected $fillable = [
         'id',
-        'title_en',
-        'title_ar',
+        'title',
     ];
     protected $hidden = [];
+    public $timestamps = false;
     public function subcategory()
     {
         return $this->hasMany(SubCategories::class, 'cat_id');

@@ -23,7 +23,12 @@
             >
                 <template slot="table-row" slot-scope="props">
                     <span v-if="props.column.field == 'actions'">
-                        <button class="btn btn-danger">حذف</button>
+                        <button
+                            class="btn btn-danger"
+                            @click="deleteCoupon(props.row.id)"
+                        >
+                            حذف
+                        </button>
                     </span>
                     <span v-else>
                         {{ props.formattedRow[props.column.field] }}
@@ -35,6 +40,7 @@
 </template>
 <script>
 import Sidebar from "../components/Sidebar";
+import axios from "axios";
 export default {
     components: {
         Sidebar,
@@ -48,15 +54,15 @@ export default {
                 },
                 {
                     label: "العنوان",
-                    field: "age",
+                    field: "title",
                 },
                 {
                     label: "النوع",
-                    field: "age",
+                    field: "type",
                 },
                 {
                     label: "المتجر",
-                    field: "age",
+                    field: "store.title",
                 },
                 {
                     label: "",
@@ -64,17 +70,26 @@ export default {
                     sortable: false,
                 },
             ],
-            rows: [
-                { id: 1, name: "John", age: 20, createdAt: "", score: 0.03343 },
-                {
-                    id: 2,
-                    name: "Jane",
-                    age: 24,
-                    createdAt: "2011-10-31",
-                    score: 0.03343,
-                },
-            ],
+            rows: [],
         };
+    },
+    mounted() {
+        axios
+            .get("/api/admin/coupons")
+            .then((res) => (this.rows = res.data))
+            .catch((err) => console.log(err));
+    },
+    methods: {
+        deleteCoupon(id) {
+            axios
+                .post("/api/admin/delete-coupon", {
+                    id: id,
+                })
+                .then((res) => {
+                    alert("تم حذف الكوبون بنجاح"), location.reload();
+                })
+                .catch((err) => console.log(err));
+        },
     },
 };
 </script>

@@ -11,10 +11,10 @@ class Stores extends Model
     public $table = "stores";
     protected $fillable = [
         'id',
-        'title_en',
-        'title_ar',
+        'title',
         'website',
         'pic'
     ];
     protected $hidden = [];
+    public $timestamps = false;
 }

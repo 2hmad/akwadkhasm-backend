@@ -1,7 +1,7 @@
 <template>
     <div id="dashboard-page">
         <Sidebar />
-        <div>f</div>
+        <div></div>
     </div>
 </template>
 <script>
