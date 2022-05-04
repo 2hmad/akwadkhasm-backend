@@ -41,9 +41,9 @@ Route::get('/categories', [CategoriesController::class, 'categories']);
 Route::get('/categories-limit/{limit}', [CategoriesController::class, 'limit']);
 
 Route::get('/search/{keyword}', [SearchController::class, 'search']);
+Route::get('/search-store/{keyword}', [SearchController::class, 'searchStores']);
 
 Route::get('/carousels', [CarouselsController::class, 'fetch']);
-
 
 Route::group(['prefix' => 'admin'], function () {
     Route::post('/auth', [AuthController::class, 'login']);
