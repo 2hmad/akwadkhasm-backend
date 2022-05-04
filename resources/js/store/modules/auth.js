@@ -18,10 +18,12 @@ const actions = {
                         JSON.stringify(res.data)
                     );
                     commit("setUser", user.get("email"));
-                    document.location.reload();
+                    // document.location.reload();
                 }
             })
-            .catch((err) => alert("Email or Password is incorrect"));
+            .catch((err) =>
+                alert("البريد الالكتروني او كلمة المرور غير صحيحة")
+            );
     },
     async LogOut({ commit }) {
         const user = null;

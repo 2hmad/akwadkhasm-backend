@@ -7,7 +7,6 @@
 <script>
 import axios from "axios";
 import Sidebar from "../components/Sidebar";
-import auth from "../store/modules/auth";
 export default {
     components: {
         Sidebar,
@@ -15,8 +14,6 @@ export default {
     data() {
         return {};
     },
-    mounted() {
-        console.log(auth);
-    },
+    mounted() {},
 };
 </script>

@@ -10,101 +10,102 @@ import addCoupons from "../pages/add-coupon.vue";
 import stores from "../pages/stores.vue";
 import addStore from "../pages/add-store.vue";
 import account from "../pages/account.vue";
-import auth from "../store/modules/auth";
+import store from "../store";
 
 Vue.use(VueRouter);
 
-const routes = [
-    {
-        path: "/login",
-        component: login,
-        name: "login",
-        meta: {
-            guest: true,
-        },
-    },
-    {
-        path: "/",
-        component: dashboard,
-        name: "dashboard",
-        meta: {
-            requiresAuth: true,
-        },
-    },
-    {
-        path: "/categories",
-        component: categories,
-        name: "categories",
-        meta: {
-            requiresAuth: true,
-        },
-    },
-    {
-        path: "/add-category",
-        component: addCategory,
-        name: "Add Category",
-        meta: {
-            requiresAuth: true,
-        },
-    },
-    {
-        path: "/edit-category/:id",
-        component: editCategory,
-        name: "Edit Category",
-        meta: {
-            requiresAuth: true,
-        },
-    },
-    {
-        path: "/coupons",
-        component: coupons,
-        name: "Coupons",
-        meta: {
-            requiresAuth: true,
-        },
-    },
-    {
-        path: "/add-coupon",
-        component: addCoupons,
-        name: "Add Coupons",
-        meta: {
-            requiresAuth: true,
-        },
-    },
-    {
-        path: "/stores",
-        component: stores,
-        name: "Stores",
-        meta: {
-            requiresAuth: true,
-        },
-    },
-    {
-        path: "/add-store",
-        component: addStore,
-        name: "Add Stores",
-        meta: {
-            requiresAuth: true,
-        },
-    },
-    {
-        path: "/account",
-        component: account,
-        name: "My Account",
-        meta: {
-            requiresAuth: true,
-        },
-    },
-];
-
 const router = new VueRouter({
     mode: "history",
-    routes,
+    scrollBehavior() {
+        return { x: 0, y: 0 };
+    },
+    routes: [
+        {
+            path: "/login",
+            component: login,
+            name: "login",
+            meta: {
+                guest: true,
+            },
+        },
+        {
+            path: "/",
+            component: dashboard,
+            name: "dashboard",
+            meta: {
+                requiresAuth: true,
+            },
+        },
+        {
+            path: "/categories",
+            component: categories,
+            name: "categories",
+            meta: {
+                requiresAuth: true,
+            },
+        },
+        {
+            path: "/add-category",
+            component: addCategory,
+            name: "Add Category",
+            meta: {
+                requiresAuth: true,
+            },
+        },
+        {
+            path: "/edit-category/:id",
+            component: editCategory,
+            name: "Edit Category",
+            meta: {
+                requiresAuth: true,
+            },
+        },
+        {
+            path: "/coupons",
+            component: coupons,
+            name: "Coupons",
+            meta: {
+                requiresAuth: true,
+            },
+        },
+        {
+            path: "/add-coupon",
+            component: addCoupons,
+            name: "Add Coupons",
+            meta: {
+                requiresAuth: true,
+            },
+        },
+        {
+            path: "/stores",
+            component: stores,
+            name: "Stores",
+            meta: {
+                requiresAuth: true,
+            },
+        },
+        {
+            path: "/add-store",
+            component: addStore,
+            name: "Add Stores",
+            meta: {
+                requiresAuth: true,
+            },
+        },
+        {
+            path: "/account",
+            component: account,
+            name: "My Account",
+            meta: {
+                requiresAuth: true,
+            },
+        },
+    ],
 });
 
 router.beforeEach((to, from, next) => {
     if (to.matched.some((record) => record.meta.requiresAuth)) {
-        if (auth.getters.isAuthenticated) {
+        if (store.getters.isAuthenticated) {
             next();
             return;
         }
@@ -116,7 +117,7 @@ router.beforeEach((to, from, next) => {
 
 router.beforeEach((to, from, next) => {
     if (to.matched.some((record) => record.meta.guest)) {
-        if (auth.getters.isAuthenticated) {
+        if (store.getters.isAuthenticated) {
             next("/");
             return;
         }

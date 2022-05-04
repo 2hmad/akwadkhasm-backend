@@ -13,7 +13,11 @@ class AuthController extends Controller
     {
         $checkEmail = DB::table('admins')->where('email', $request->email)->first();
         if ($checkEmail !== null) {
-            return $checkEmail;
+            if ($request->password === $checkEmail->password) {
+                return $checkEmail;
+            } else {
+                return response()->json('كلمة المرور غير صحيحة', 404);
+            }
         } else {
             return response()->json('البريد الالكتروني غير صحيح', 404);
         }
