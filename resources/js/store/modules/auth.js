@@ -18,7 +18,7 @@ const actions = {
                         JSON.stringify(res.data)
                     );
                     commit("setUser", user.get("email"));
-                    document.location.reload();
+                    // document.location.reload();
                 }
             })
             .catch((err) =>
