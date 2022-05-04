@@ -10,7 +10,7 @@ class SearchController extends Controller
 {
     public function search($keyword)
     {
-        Coupons::with('store')->where('title', 'like', '%' . $keyword . '%')->orWhere('coupon', 'like', '%' . $keyword . '%')->get();
+        return Coupons::with('store')->where('title', 'like', '%' . $keyword . '%')->orWhere('coupon', 'like', '%' . $keyword . '%')->get();
     }
     public function searchStores($keyword)
     {
