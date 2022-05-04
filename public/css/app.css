@@ -1,2 +1,56 @@
 @import url(https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;500;600;700&display=swap);
-*{box-sizing:border-box!important;font-family:Cairo,sans-serif;margin:0;padding:0}body,html{background-color:#f5f5f5;direction:rtl;min-height:100vh}.btn{background-color:#1475bc;border:1px solid #1475bc;border-radius:7px;color:#fff;cursor:pointer;padding:7px}#login-page{align-items:center;display:flex;height:100%;justify-content:center;min-height:100vh}#login-page form{background:#fff;border-radius:5px;box-shadow:2px 3px 20px 0 #e9e9e9;display:flex;flex-direction:column;gap:10px;max-width:500px;padding:20px;width:500px}#login-page form h3{text-align:center}#login-page form .email,#login-page form .password{border:1px solid #ccc;border-radius:5px;outline:none;padding:7px}#dashboard-page{min-height:100vh}
+* {
+  margin: 0;
+  padding: 0;
+  font-family: "Cairo", sans-serif;
+  box-sizing: border-box !important;
+}
+
+html,
+body {
+  background-color: #f5f5f5;
+  direction: rtl;
+  min-height: 100vh;
+}
+
+.btn {
+  background-color: #1475bc;
+  padding: 7px;
+  color: white;
+  border-radius: 7px;
+  border: 1px solid #1475bc;
+  cursor: pointer;
+}
+
+#login-page {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  min-height: 100vh;
+}
+#login-page form {
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  width: 500px;
+  max-width: 500px;
+  background: white;
+  box-shadow: 2px 3px 20px 0px #e9e9e9;
+  border-radius: 5px;
+}
+#login-page form h3 {
+  text-align: center;
+}
+#login-page form .email,
+#login-page form .password {
+  padding: 7px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  outline: none;
+}
+
+#dashboard-page {
+  min-height: 100vh;
+}
