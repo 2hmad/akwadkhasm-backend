@@ -26,7 +26,7 @@ class CouponsController extends Controller
     }
     public function couponsByCat($cat)
     {
-        $getCat = Categories::where('title_en', $cat)->first();
+        $getCat = Categories::where('id', $cat)->first();
         return Coupons::where('category_id', $getCat->id)->with('store')->get();
     }
     public function couponsBySubCat($subcat)

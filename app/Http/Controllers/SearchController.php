@@ -9,6 +9,6 @@ class SearchController extends Controller
 {
     public function search($keyword)
     {
-        return Coupons::with('store')->where('title_en', 'like', '%' . $keyword . '%')->orWhere('title_ar', 'like', '%' . $keyword . '%')->orWhere('coupon', 'like', '%' . $keyword . '%')->get();
+        return Coupons::with('store')->where('title', 'like', '%' . $keyword . '%')->orWhere('coupon', 'like', '%' . $keyword . '%')->get();
     }
 }
