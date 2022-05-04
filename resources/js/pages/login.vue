@@ -45,9 +45,6 @@ export default {
             },
         };
     },
-    mounted() {
-        console.log(store.state);
-    },
     methods: {
         ...mapActions(["LogIn"]),
         async login() {
