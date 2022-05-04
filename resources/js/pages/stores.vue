@@ -21,11 +21,11 @@
                 }"
                 style="direction: ltr; margin-top: 3%"
             >
-                <!-- <template slot="table-row" slot-scope="props">
+                <template slot="table-row" slot-scope="props">
                     <span v-if="props.column.field == 'actions'">
                         <a
                             class="btn btn-danger"
-                            @click="deleteStore(props.rows.id)"
+                            @click="deleteStore(props.row.id)"
                         >
                             حذف
                         </a>
@@ -33,7 +33,7 @@
                     <span v-else>
                         {{ props.formattedRow[props.column.field] }}
                     </span>
-                </template> -->
+                </template>
             </vue-good-table>
         </div>
     </div>
@@ -56,11 +56,11 @@ export default {
                     label: "المتجر",
                     field: "title",
                 },
-                // {
-                //     label: "",
-                //     field: "actions",
-                //     sortable: false,
-                // },
+                {
+                    label: "",
+                    field: "actions",
+                    sortable: false,
+                },
             ],
             rows: [],
         };
@@ -74,7 +74,7 @@ export default {
     methods: {
         deleteStore(id) {
             axios
-                .get("/api/admin/delete-store", {
+                .post("/api/admin/delete-store", {
                     id: id,
                 })
                 .then((res) => {
