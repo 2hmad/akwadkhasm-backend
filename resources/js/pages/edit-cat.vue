@@ -136,12 +136,12 @@ export default {
     methods: {
         addSubCat() {
             axios
-                .post("/api/admin/add-subcat/", {
+                .post("/api/admin/add-subcat", {
                     title: this.subCat.title,
                     cat_id: this.$route.params.id,
                 })
                 .then((res) => {
-                    alert("تم اضافة التصنيف الفرعي"), location.reload();
+                    alert("تم اضافة التصنيف الفرعي");
                 })
                 .catch((err) => console.log(err));
         },
