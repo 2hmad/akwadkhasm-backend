@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Admin\AccountController;
 use App\Http\Controllers\Admin\AuthController;
 use App\Http\Controllers\Admin\CatsController;
 use App\Http\Controllers\Admin\CouponsController as AdminCouponsController;
@@ -51,6 +52,7 @@ Route::group(['prefix' => 'admin'], function () {
     Route::post('/delete-coupon', [AdminCouponsController::class, 'delete']);
     Route::get('/stores', [AdminStoresController::class, 'index']);
     Route::post('/add-store', [AdminStoresController::class, 'add']);
+    Route::post('/delete-store', [AdminStoresController::class, 'delete']);
     Route::get('/cats', [CatsController::class, 'index']);
     Route::post('/subcats', [CatsController::class, 'getSubCats']);
     Route::post('/add-cat', [CatsController::class, 'add']);
@@ -58,4 +60,5 @@ Route::group(['prefix' => 'admin'], function () {
     Route::post('/delete-subcat', [CatsController::class, 'deleteSubCat']);
     Route::post('/edit-cat', [CatsController::class, 'edit']);
     Route::get('/one-cat/{id}', [CatsController::class, 'oneCat']);
+    Route::post('/change-password', [AccountController::class, 'changePassword']);
 });

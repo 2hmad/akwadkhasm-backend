@@ -5547,38 +5547,6 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
 
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
@@ -5589,15 +5557,26 @@ __webpack_require__.r(__webpack_exports__);
     return {
       name: "",
       email: "",
-      changePassword: {
+      user: JSON.parse(localStorage.getItem("akwadKhasmAdmin")),
+      password: {
         oldPassword: "",
         newPassword: ""
       }
     };
   },
-  mounted: function mounted() {},
   methods: {
-    changePassword: function changePassword() {}
+    changePassword: function changePassword() {
+      axios__WEBPACK_IMPORTED_MODULE_0___default().post("/api/admin/change-password", this.password, {
+        headers: {
+          token: this.user.token
+        }
+      }).then(function (res) {
+        alert("تم تغيير كلمة المرور");
+        location.reload();
+      })["catch"](function (err) {
+        return alert(err.response.data);
+      });
+    }
   }
 });
 
@@ -6449,20 +6428,21 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
                 return _this.LogIn(User);
 
               case 6:
-                _context.next = 11;
+                window.location.href = "/";
+                _context.next = 12;
                 break;
 
-              case 8:
-                _context.prev = 8;
+              case 9:
+                _context.prev = 9;
                 _context.t0 = _context["catch"](3);
                 console.log(_context.t0);
 
-              case 11:
+              case 12:
               case "end":
                 return _context.stop();
             }
           }
-        }, _callee, null, [[3, 8]]);
+        }, _callee, null, [[3, 9]]);
       }))();
     }
   })
@@ -6519,6 +6499,11 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
 
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
@@ -6533,11 +6518,12 @@ __webpack_require__.r(__webpack_exports__);
       }, {
         label: "المتجر",
         field: "title"
-      }, {
-        label: "",
-        field: "actions",
-        sortable: false
-      }],
+      } // {
+      //     label: "",
+      //     field: "actions",
+      //     sortable: false,
+      // },
+      ],
       rows: []
     };
   },
@@ -6549,6 +6535,17 @@ __webpack_require__.r(__webpack_exports__);
     })["catch"](function (err) {
       return console.log(err);
     });
+  },
+  methods: {
+    deleteStore: function deleteStore(id) {
+      axios__WEBPACK_IMPORTED_MODULE_0___default().get("/api/admin/delete-store", {
+        id: id
+      }).then(function (res) {
+        alert("تم حذف المتجر"), location.reload();
+      })["catch"](function (err) {
+        return console.log(err);
+      });
+    }
   }
 });
 
@@ -6859,7 +6856,8 @@ var actions = {
               axios__WEBPACK_IMPORTED_MODULE_1___default().post("api/admin/auth", user).then(function (res) {
                 if (res.data.token) {
                   localStorage.setItem("akwadKhasmAdmin", JSON.stringify(res.data));
-                  commit("setUser", user.get("email")); // document.location.reload();
+                  commit("setUser", user.get("email"));
+                  document.location.reload();
                 }
               })["catch"](function (err) {
                 return alert("البريد الالكتروني او كلمة المرور غير صحيحة");
@@ -76731,91 +76729,6 @@ var render = function () {
         { staticClass: "container", staticStyle: { "margin-top": "3%" } },
         [
           _c(
-            "form",
-            {
-              on: {
-                submit: function ($event) {
-                  $event.preventDefault()
-                  return _vm.addCategory.apply(null, arguments)
-                },
-              },
-            },
-            [
-              _c("div", { staticClass: "mb-3" }, [
-                _c(
-                  "label",
-                  { staticClass: "form-label", attrs: { for: "fullname" } },
-                  [
-                    _vm._v(
-                      "\n                    الاسم بالكامل\n                "
-                    ),
-                  ]
-                ),
-                _vm._v(" "),
-                _c("input", {
-                  directives: [
-                    {
-                      name: "model",
-                      rawName: "v-model",
-                      value: _vm.name,
-                      expression: "name",
-                    },
-                  ],
-                  staticClass: "form-control",
-                  attrs: { type: "text", id: "fullname", required: "" },
-                  domProps: { value: _vm.name },
-                  on: {
-                    input: function ($event) {
-                      if ($event.target.composing) {
-                        return
-                      }
-                      _vm.name = $event.target.value
-                    },
-                  },
-                }),
-              ]),
-              _vm._v(" "),
-              _c("div", { staticClass: "mb-3" }, [
-                _c(
-                  "label",
-                  { staticClass: "form-label", attrs: { for: "email" } },
-                  [
-                    _vm._v(
-                      "\n                    البريد الالكتروني\n                "
-                    ),
-                  ]
-                ),
-                _vm._v(" "),
-                _c("input", {
-                  directives: [
-                    {
-                      name: "model",
-                      rawName: "v-model",
-                      value: _vm.email,
-                      expression: "email",
-                    },
-                  ],
-                  staticClass: "form-control",
-                  attrs: { type: "text", id: "email", required: "" },
-                  domProps: { value: _vm.email },
-                  on: {
-                    input: function ($event) {
-                      if ($event.target.composing) {
-                        return
-                      }
-                      _vm.email = $event.target.value
-                    },
-                  },
-                }),
-              ]),
-              _vm._v(" "),
-              _vm._m(0),
-            ]
-          ),
-          _vm._v(" "),
-          _c("hr"),
-          _vm._v(" "),
-          _c(
             "h5",
             { staticStyle: { "text-align": "center", margin: "3% auto" } },
             [_vm._v("\n            تغيير كلمة المرور\n        ")]
@@ -76827,7 +76740,7 @@ var render = function () {
               on: {
                 submit: function ($event) {
                   $event.preventDefault()
-                  return _vm.addCategory.apply(null, arguments)
+                  return _vm.changePassword.apply(null, arguments)
                 },
               },
             },
@@ -76848,23 +76761,19 @@ var render = function () {
                     {
                       name: "model",
                       rawName: "v-model",
-                      value: _vm.changePassword.oldPassword,
-                      expression: "changePassword.oldPassword",
+                      value: _vm.password.oldPassword,
+                      expression: "password.oldPassword",
                     },
                   ],
                   staticClass: "form-control",
-                  attrs: { type: "text", id: "oldPassword", required: "" },
-                  domProps: { value: _vm.changePassword.oldPassword },
+                  attrs: { type: "password", id: "oldPassword", required: "" },
+                  domProps: { value: _vm.password.oldPassword },
                   on: {
                     input: function ($event) {
                       if ($event.target.composing) {
                         return
                       }
-                      _vm.$set(
-                        _vm.changePassword,
-                        "oldPassword",
-                        $event.target.value
-                      )
+                      _vm.$set(_vm.password, "oldPassword", $event.target.value)
                     },
                   },
                 }),
@@ -76886,29 +76795,25 @@ var render = function () {
                     {
                       name: "model",
                       rawName: "v-model",
-                      value: _vm.changePassword.newPassword,
-                      expression: "changePassword.newPassword",
+                      value: _vm.password.newPassword,
+                      expression: "password.newPassword",
                     },
                   ],
                   staticClass: "form-control",
-                  attrs: { type: "text", id: "newPassword", required: "" },
-                  domProps: { value: _vm.changePassword.newPassword },
+                  attrs: { type: "password", id: "newPassword", required: "" },
+                  domProps: { value: _vm.password.newPassword },
                   on: {
                     input: function ($event) {
                       if ($event.target.composing) {
                         return
                       }
-                      _vm.$set(
-                        _vm.changePassword,
-                        "newPassword",
-                        $event.target.value
-                      )
+                      _vm.$set(_vm.password, "newPassword", $event.target.value)
                     },
                   },
                 }),
               ]),
               _vm._v(" "),
-              _vm._m(1),
+              _vm._m(0),
             ]
           ),
         ]
@@ -76918,18 +76823,6 @@ var render = function () {
   )
 }
 var staticRenderFns = [
-  function () {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "d-grid gap-2 col-2 mx-auto" }, [
-      _c(
-        "button",
-        { staticClass: "btn btn-primary", attrs: { type: "submit" } },
-        [_vm._v("\n                    حفظ التغييرات\n                ")]
-      ),
-    ])
-  },
   function () {
     var _vm = this
     var _h = _vm.$createElement
@@ -78333,28 +78226,6 @@ var render = function () {
                 prevLabel: "السابق",
               },
             },
-            scopedSlots: _vm._u([
-              {
-                key: "table-row",
-                fn: function (props) {
-                  return [
-                    props.column.field == "actions"
-                      ? _c("span", [
-                          _c("a", { staticClass: "btn btn-danger" }, [
-                            _vm._v(" حذف "),
-                          ]),
-                        ])
-                      : _c("span", [
-                          _vm._v(
-                            "\n                    " +
-                              _vm._s(props.formattedRow[props.column.field]) +
-                              "\n                "
-                          ),
-                        ]),
-                  ]
-                },
-              },
-            ]),
           }),
         ],
         1

@@ -31,4 +31,8 @@ class StoresController extends Controller
             return response()->json(['alert' => 'Invalid MIME Type'], 404);
         }
     }
+    public function delete(Request $request)
+    {
+        return Stores::where('id', $request->id)->delete();
+    }
 }
