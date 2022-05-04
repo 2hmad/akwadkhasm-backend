@@ -53,7 +53,7 @@ export default {
             User.append("password", this.form.password);
             try {
                 await this.LogIn(User);
-                window.location.href = "/";
+                // window.location.href = "/";
             } catch (error) {
                 console.log(error);
             }
