@@ -5,6 +5,7 @@ use App\Http\Controllers\Admin\AuthController;
 use App\Http\Controllers\Admin\CatsController;
 use App\Http\Controllers\Admin\CouponsController as AdminCouponsController;
 use App\Http\Controllers\Admin\DashboardController;
+use App\Http\Controllers\Admin\SlidesController;
 use App\Http\Controllers\Admin\StoresController as AdminStoresController;
 use App\Http\Controllers\CarouselsController;
 use App\Http\Controllers\CategoriesController;
@@ -60,5 +61,8 @@ Route::group(['prefix' => 'admin'], function () {
     Route::post('/delete-subcat', [CatsController::class, 'deleteSubCat']);
     Route::post('/edit-cat', [CatsController::class, 'edit']);
     Route::get('/one-cat/{id}', [CatsController::class, 'oneCat']);
+    Route::get('/slides', [SlidesController::class, 'index']);
+    Route::post('/delete-slide', [SlidesController::class, 'delete']);
+    Route::post('/add-slide', [SlidesController::class, 'add']);
     Route::post('/change-password', [AccountController::class, 'changePassword']);
 });

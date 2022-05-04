@@ -53,6 +53,14 @@
                     <li class="nav-item">
                         <a
                             class="nav-link"
+                            href="/add-slide"
+                            style="color: white"
+                            >الاعلانات</a
+                        >
+                    </li>
+                    <li class="nav-item">
+                        <a
+                            class="nav-link"
                             href="/account"
                             style="color: white"
                         >

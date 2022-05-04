@@ -11,6 +11,7 @@ import stores from "../pages/stores.vue";
 import addStore from "../pages/add-store.vue";
 import account from "../pages/account.vue";
 import store from "../store";
+import addSlide from "../pages/add-slide.vue";
 
 Vue.use(VueRouter);
 
@@ -88,6 +89,14 @@ const router = new VueRouter({
             path: "/add-store",
             component: addStore,
             name: "Add Stores",
+            meta: {
+                requiresAuth: true,
+            },
+        },
+        {
+            path: "/add-slide",
+            component: addSlide,
+            name: "Add Slide",
             meta: {
                 requiresAuth: true,
             },
