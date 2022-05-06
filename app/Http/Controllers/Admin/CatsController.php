@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Models\Categories;
+use App\Models\Coupons;
 use App\Models\SubCategories;
 use Illuminate\Http\Request;
 
@@ -12,6 +13,12 @@ class CatsController extends Controller
     public function index()
     {
         return Categories::orderBy('id', 'DESC')->get();
+    }
+    public function delete(Request $request)
+    {
+        Categories::where('id', $request->id)->delete();
+        Coupons::where('category_id', $request->id)->delete();
+        SubCategories::where('cat_id', $request->id)->delete();
     }
     public function getSubCats(Request $request)
     {

@@ -55,6 +55,7 @@ Route::group(['prefix' => 'admin'], function () {
     Route::post('/add-store', [AdminStoresController::class, 'add']);
     Route::post('/delete-store', [AdminStoresController::class, 'delete']);
     Route::get('/cats', [CatsController::class, 'index']);
+    Route::post('/delete-cat', [CatsController::class, 'delete']);
     Route::post('/subcats', [CatsController::class, 'getSubCats']);
     Route::post('/add-cat', [CatsController::class, 'add']);
     Route::post('/add-subcat', [CatsController::class, 'addSubCat']);

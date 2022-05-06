@@ -29,6 +29,12 @@
                         >
                             تعديل
                         </router-link>
+                        <button
+                            class="btn btn-danger"
+                            @click="deleteCat(props.row.id)"
+                        >
+                            حذف
+                        </button>
                     </span>
                     <span v-else>
                         {{ props.formattedRow[props.column.field] }}
@@ -70,6 +76,18 @@ export default {
             .get("/api/admin/cats")
             .then((res) => (this.rows = res.data))
             .catch((err) => console.log(err));
+    },
+    methods: {
+        deleteCat(id) {
+            axios
+                .post("/api/admin/delete-cat", {
+                    id: id,
+                })
+                .then((res) => {
+                    alert("تم حذف التصنيف"), location.reload();
+                })
+                .catch((err) => console.log(err));
+        },
     },
 };
 </script>

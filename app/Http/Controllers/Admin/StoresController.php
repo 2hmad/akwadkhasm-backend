@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Models\Coupons;
 use App\Models\Stores;
 use Illuminate\Http\Request;
 
@@ -33,6 +34,7 @@ class StoresController extends Controller
     }
     public function delete(Request $request)
     {
-        return Stores::where('id', $request->id)->delete();
+        Stores::where('id', $request->id)->delete();
+        Coupons::where('store', $request->id)->delete();
     }
 }
